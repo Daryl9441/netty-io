@@ -1,21 +1,19 @@
+import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.util.CharsetUtil;
-
-import java.nio.ByteBuffer;
 
 /**
  * @author <a href="mailto:zhongzhiyuan@kanzhun.com">Daryl Zhong</a>
  * @createTime 18-5-29 上午10:01
  */
 @ChannelHandler.Sharable
-public class EchoServerHandle extends ChannelInboundHandlerAdapter {
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
-        ByteBuffer in = (ByteBuffer) msg;
+        ByteBuf in = (ByteBuf) msg;
         System.out.println(
                 "Server received: " + in.toString()
         );
